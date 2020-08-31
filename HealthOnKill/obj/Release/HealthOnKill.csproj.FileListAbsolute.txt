@@ -1,0 +1,17 @@
+C:\Users\quint\source\repos\HealthOnKill\HealthOnKill\bin\Release\HealthOnKill.dll
+C:\Users\quint\source\repos\HealthOnKill\HealthOnKill\bin\Release\HealthOnKill.pdb
+C:\Users\quint\source\repos\HealthOnKill\HealthOnKill\bin\Release\Assembly-CSharp.dll
+C:\Users\quint\source\repos\HealthOnKill\HealthOnKill\bin\Release\Exiled.API.dll
+C:\Users\quint\source\repos\HealthOnKill\HealthOnKill\bin\Release\Exiled.Events.dll
+C:\Users\quint\source\repos\HealthOnKill\HealthOnKill\bin\Release\Exiled.Loader.dll
+C:\Users\quint\source\repos\HealthOnKill\HealthOnKill\bin\Release\Exiled.Updater.dll
+C:\Users\quint\source\repos\HealthOnKill\HealthOnKill\bin\Release\System.Memory.dll
+C:\Users\quint\source\repos\HealthOnKill\HealthOnKill\bin\Release\System.Buffers.dll
+C:\Users\quint\source\repos\HealthOnKill\HealthOnKill\bin\Release\Exiled.Permissions.dll
+C:\Users\quint\source\repos\HealthOnKill\HealthOnKill\bin\Release\System.Numerics.Vectors.dll
+C:\Users\quint\source\repos\HealthOnKill\HealthOnKill\bin\Release\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\quint\source\repos\HealthOnKill\HealthOnKill\obj\Release\HealthOnKill.csprojAssemblyReference.cache
+C:\Users\quint\source\repos\HealthOnKill\HealthOnKill\obj\Release\HealthOnKill.csproj.CoreCompileInputs.cache
+C:\Users\quint\source\repos\HealthOnKill\HealthOnKill\obj\Release\HealthOnKill.csproj.CopyComplete
+C:\Users\quint\source\repos\HealthOnKill\HealthOnKill\obj\Release\HealthOnKill.dll
+C:\Users\quint\source\repos\HealthOnKill\HealthOnKill\obj\Release\HealthOnKill.pdb
