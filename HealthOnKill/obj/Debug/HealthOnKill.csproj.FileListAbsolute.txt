@@ -15,3 +15,14 @@ C:\Users\quint\source\repos\HealthOnKill\HealthOnKill\obj\Debug\HealthOnKill.csp
 C:\Users\quint\source\repos\HealthOnKill\HealthOnKill\obj\Debug\HealthOnKill.csproj.CopyComplete
 C:\Users\quint\source\repos\HealthOnKill\HealthOnKill\obj\Debug\HealthOnKill.dll
 C:\Users\quint\source\repos\HealthOnKill\HealthOnKill\obj\Debug\HealthOnKill.pdb
+C:\Users\Infer\Source\Repos\HealthOnKill\HealthOnKill\bin\Debug\HealthOnKill.dll
+C:\Users\Infer\Source\Repos\HealthOnKill\HealthOnKill\bin\Debug\HealthOnKill.pdb
+C:\Users\Infer\Source\Repos\HealthOnKill\HealthOnKill\bin\Debug\System.Memory.dll
+C:\Users\Infer\Source\Repos\HealthOnKill\HealthOnKill\bin\Debug\System.Buffers.dll
+C:\Users\Infer\Source\Repos\HealthOnKill\HealthOnKill\bin\Debug\Exiled.Permissions.dll
+C:\Users\Infer\Source\Repos\HealthOnKill\HealthOnKill\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\Infer\Source\Repos\HealthOnKill\HealthOnKill\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\Infer\Source\Repos\HealthOnKill\HealthOnKill\obj\Debug\HealthOnKill.csprojAssemblyReference.cache
+C:\Users\Infer\Source\Repos\HealthOnKill\HealthOnKill\obj\Debug\HealthOnKill.csproj.CopyComplete
+C:\Users\Infer\Source\Repos\HealthOnKill\HealthOnKill\obj\Debug\HealthOnKill.dll
+C:\Users\Infer\Source\Repos\HealthOnKill\HealthOnKill\obj\Debug\HealthOnKill.pdb

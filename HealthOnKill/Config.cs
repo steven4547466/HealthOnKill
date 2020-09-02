@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 using Exiled.API.Interfaces;
-using Exiled.Events.Handlers;
 
 namespace HealthOnKill
 {
@@ -13,8 +7,8 @@ namespace HealthOnKill
     {
         public bool IsEnabled { get; set; } = true;
 
-        
-        public bool isHealthRegenRandom = true;
+        [Description("Determines if the plugin should use random values")]
+        public bool isHealthRegenRandom { get; set; } = true;
 
         [Description("If isHealthRegenRandom is set to false, SCP-049 will regen this set amount")]
         public int scp049HealthOnZomebieRaisedSet { get; set; } = 40;

@@ -1,29 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Exiled.API.Features;
-using Exiled.API.Enums;
-using System.Dynamic;
-
-using Player = Exiled.Events.Handlers.Player;
+﻿using Exiled.API.Features;
 using Exiled.Events.Handlers;
+using Player = Exiled.Events.Handlers.Player;
 
 namespace HealthOnKill
 {
     public class HealthOnKill : Plugin<Config>
     {
-        private static readonly Lazy<HealthOnKill> LazyInstance = new Lazy<HealthOnKill>();
-        public static HealthOnKill Instance => LazyInstance.Value;
+        internal static HealthOnKill instance;
 
         private Handlers.Client client;
 
         public override void OnEnabled()
         {
             base.OnEnabled();
+            instance = this;
             EventRegister();
-
         }
 
         public override void OnDisabled()
