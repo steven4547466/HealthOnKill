@@ -1,6 +1,7 @@
 ﻿using Exiled.Events.EventArgs;
 using System;
 using System.Linq;
+using SerpentsHand.API;
 
 namespace HealthOnKill.Handlers
 {
@@ -75,7 +76,7 @@ namespace HealthOnKill.Handlers
         {
             Exiled.API.Features.Player Player106 = Exiled.API.Features.Player.List.FirstOrDefault(x => x.Role == RoleType.Scp106);
 
-            if (Player106 != null)
+            if (Player106 != null && !SerpentsHand.API.SerpentsHand.GetSHPlayers().Contains(ev.Player))
             {
                 if (HealthOnKill.instance.Config.isHealthRegenRandom)
                 {

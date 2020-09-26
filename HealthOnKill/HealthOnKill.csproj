@@ -47,6 +47,9 @@
     <Reference Include="Exiled.Updater">
       <HintPath>..\..\..\..\Documents\Exiled.tar\EXILED\Plugins\Exiled.Updater.dll</HintPath>
     </Reference>
+    <Reference Include="SerpentsHand">
+      <HintPath>..\..\SerpentsHand\SerpentsHand\bin\Release\SerpentsHand.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />

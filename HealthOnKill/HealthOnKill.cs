@@ -1,5 +1,6 @@
 ﻿using Exiled.API.Features;
 using Exiled.Events.Handlers;
+using Exiled.Loader;
 using Player = Exiled.Events.Handlers.Player;
 
 namespace HealthOnKill
@@ -10,9 +11,12 @@ namespace HealthOnKill
 
         private Handlers.Client client;
 
+        internal static bool isSH = false;
+
         public override void OnEnabled()
         {
             base.OnEnabled();
+            CheckSH();
             instance = this;
             EventRegister();
         }
@@ -39,6 +43,18 @@ namespace HealthOnKill
             Player.Died -= client.OnPlayerDeath;
             Player.FailingEscapePocketDimension -= client.OnPocketDimensionDeath;
             Scp049.FinishingRecall -= client.OnZombieRaised;
+        }
+
+        internal void CheckSH()
+        {
+            foreach (var plugin in Loader.Plugins)
+            {
+                if (plugin.Name == "SerpentsHand")
+                {
+                    isSH = true;
+                    return;
+                }
+            }
         }
     }
 }
