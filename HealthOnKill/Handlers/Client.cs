@@ -1,94 +1,56 @@
 ﻿using Exiled.Events.EventArgs;
-using System;
 using System.Linq;
-using SerpentsHand.API;
+using UnityEngine;
 
 namespace HealthOnKill.Handlers
 {
     class Client
     {
-        private Random r = new Random();
-
-        public void OnPlayerDeath(DiedEventArgs ev)
+        internal void OnPlayerDeath(DiedEventArgs ev)
         {
             if (ev.Killer.Team == Team.SCP)
             {
+                int health = 0;
                 if (ev.Killer.Role == RoleType.Scp93989 || ev.Killer.Role == RoleType.Scp93953)
                 {
-                    if (HealthOnKill.instance.Config.isHealthRegenRandom)
-                    {
-                        int rand = r.Next(HealthOnKill.instance.Config.scp939HealthOnKillRandomLowerBounds, HealthOnKill.instance.Config.scp939HealthOnKillRandomUpperBounds);
-                        int health = (int)ev.Killer.Health + rand;
-                        ev.Killer.Health = health < ev.Killer.MaxHealth ? health : ev.Killer.MaxHealth;
-                    }
-                    else
-                    {
-                        int health = (int)ev.Killer.Health + HealthOnKill.instance.Config.scp939HealthOnKillSet;
-                        ev.Killer.Health = health < ev.Killer.MaxHealth ? health : ev.Killer.MaxHealth;
-                    }
+                    health = HealthOnKill.instance.Config.isHealthRegenRandom ?
+                        (int)ev.Killer.Health + Random.Range(HealthOnKill.instance.Config.scp939HealthOnKillRandomLowerBounds, HealthOnKill.instance.Config.scp939HealthOnKillRandomUpperBounds) :
+                        (int)ev.Killer.Health + HealthOnKill.instance.Config.scp939HealthOnKillSet;
                 }
                 else if (ev.Killer.Role == RoleType.Scp173)
                 {
-                    if (HealthOnKill.instance.Config.isHealthRegenRandom)
-                    {
-                        int rand = r.Next(HealthOnKill.instance.Config.scp173HealthOnKillRandomLowerBounds, HealthOnKill.instance.Config.scp173HealthOnKillRandomUpperBounds);
-                        int health = (int)ev.Killer.Health + rand;
-                        ev.Killer.Health = health < ev.Killer.MaxHealth ? health : ev.Killer.MaxHealth;
-                    }
-                    else
-                    {
-                        int health = (int)ev.Killer.Health + HealthOnKill.instance.Config.scp173HealthOnKillSet;
-                        ev.Killer.Health = health < ev.Killer.MaxHealth ? health : ev.Killer.MaxHealth;
-                    }
+                    health = HealthOnKill.instance.Config.isHealthRegenRandom ? 
+                        (int)ev.Killer.Health + Random.Range(HealthOnKill.instance.Config.scp173HealthOnKillRandomLowerBounds, HealthOnKill.instance.Config.scp173HealthOnKillRandomUpperBounds) :
+                        (int)ev.Killer.Health + HealthOnKill.instance.Config.scp173HealthOnKillSet;
                 }
                 else if (ev.Killer.Role == RoleType.Scp0492)
                 {
-                    if (HealthOnKill.instance.Config.isHealthRegenRandom)
-                    {
-                        int rand = r.Next(HealthOnKill.instance.Config.scp0492HealthOnKillRandomLowerBounds, HealthOnKill.instance.Config.scp0492HealthOnKillRandomUpperBounds);
-                        int health = (int)ev.Killer.Health + rand;
-                        ev.Killer.Health = health < ev.Killer.MaxHealth ? health : ev.Killer.MaxHealth;
-                    }
-                    else
-                    {
-                        int health = (int)ev.Killer.Health + HealthOnKill.instance.Config.scp0492HealthOnKillSet;
-                        ev.Killer.Health = health < ev.Killer.MaxHealth ? health : ev.Killer.MaxHealth;
-                    }
+                    health = HealthOnKill.instance.Config.isHealthRegenRandom ? 
+                        (int)ev.Killer.Health + Random.Range(HealthOnKill.instance.Config.scp0492HealthOnKillRandomLowerBounds, HealthOnKill.instance.Config.scp0492HealthOnKillRandomUpperBounds) :
+                        (int)ev.Killer.Health + HealthOnKill.instance.Config.scp0492HealthOnKillSet;
                 }
+                ev.Killer.Health = Mathf.Clamp(health, 0f, ev.Killer.MaxHealth);
             }
         }
-        public void OnZombieRaised(FinishingRecallEventArgs ev)
+
+        internal void OnZombieRaised(FinishingRecallEventArgs ev)
         {
-            if (HealthOnKill.instance.Config.isHealthRegenRandom)
-            {
-                int rand = r.Next(HealthOnKill.instance.Config.scp049HealthOnZombieRaisedRandomLowerBounds, HealthOnKill.instance.Config.scp049HealthOnZombieRaisedRandomUpperBounds);
-                int health = (int)ev.Scp049.Health + rand;
-                ev.Scp049.Health = health < ev.Scp049.MaxHealth ? health : ev.Scp049.MaxHealth;
-            }
-            else
-            {
-                int health = (int)ev.Scp049.Health + HealthOnKill.instance.Config.scp049HealthOnZomebieRaisedSet;
-                ev.Scp049.Health = health < ev.Scp049.MaxHealth ? health : ev.Scp049.MaxHealth;
-            }
-            
+            int health = HealthOnKill.instance.Config.isHealthRegenRandom ? 
+                (int)ev.Scp049.Health + Random.Range(HealthOnKill.instance.Config.scp049HealthOnZombieRaisedRandomLowerBounds, HealthOnKill.instance.Config.scp049HealthOnZombieRaisedRandomUpperBounds) :
+                (int)ev.Scp049.Health + HealthOnKill.instance.Config.scp049HealthOnZomebieRaisedSet;
+            ev.Scp049.Health = Mathf.Clamp(health, 0f, ev.Scp049.MaxHealth);
         }
-        public void OnPocketDimensionDeath(FailingEscapePocketDimensionEventArgs ev)
+
+        internal void OnPocketDimensionDeath(FailingEscapePocketDimensionEventArgs ev)
         {
             Exiled.API.Features.Player Player106 = Exiled.API.Features.Player.List.FirstOrDefault(x => x.Role == RoleType.Scp106);
 
             if (Player106 != null && !SerpentsHand.API.SerpentsHand.GetSHPlayers().Contains(ev.Player))
             {
-                if (HealthOnKill.instance.Config.isHealthRegenRandom)
-                {
-                    int rand = r.Next(5, 15);
-                    int health = (int)Player106.Health + rand;
-                    Player106.Health = health < Player106.MaxHealth ? health : Player106.MaxHealth;
-                }
-                else
-                {
-                    int health = (int)Player106.Health + HealthOnKill.instance.Config.scp106HealthOnKillSet;
-                    Player106.Health = health < Player106.MaxHealth ? health : Player106.MaxHealth;
-                }
+                int health = HealthOnKill.instance.Config.isHealthRegenRandom ? 
+                    (int)Player106.Health + Random.Range(5, 15) :
+                    (int)Player106.Health + HealthOnKill.instance.Config.scp106HealthOnKillSet;
+                Player106.Health = Mathf.Clamp(health, 0f, Player106.MaxHealth);
             }
         }
     }

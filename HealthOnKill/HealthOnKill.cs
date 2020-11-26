@@ -18,12 +18,14 @@ namespace HealthOnKill
             base.OnEnabled();
             CheckSH();
             instance = this;
+
             EventRegister();
         }
 
         public override void OnDisabled()
         {
             base.OnDisabled();
+
             EventUnregister();
         }
 
