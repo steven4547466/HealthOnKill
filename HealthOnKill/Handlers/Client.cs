@@ -1,4 +1,5 @@
-﻿using Exiled.Events.EventArgs;
+﻿using Exiled.API.Features;
+using Exiled.Events.EventArgs;
 using System.Linq;
 using UnityEngine;
 
@@ -11,24 +12,32 @@ namespace HealthOnKill.Handlers
             if (ev.Killer.Team == Team.SCP)
             {
                 int health = 0;
-                if (ev.Killer.Role == RoleType.Scp93989 || ev.Killer.Role == RoleType.Scp93953)
-                {
-                    health = HealthOnKill.instance.Config.isHealthRegenRandom ?
-                        (int)ev.Killer.Health + Random.Range(HealthOnKill.instance.Config.scp939HealthOnKillRandomLowerBounds, HealthOnKill.instance.Config.scp939HealthOnKillRandomUpperBounds) :
-                        (int)ev.Killer.Health + HealthOnKill.instance.Config.scp939HealthOnKillSet;
-                }
-                else if (ev.Killer.Role == RoleType.Scp173)
-                {
-                    health = HealthOnKill.instance.Config.isHealthRegenRandom ? 
-                        (int)ev.Killer.Health + Random.Range(HealthOnKill.instance.Config.scp173HealthOnKillRandomLowerBounds, HealthOnKill.instance.Config.scp173HealthOnKillRandomUpperBounds) :
-                        (int)ev.Killer.Health + HealthOnKill.instance.Config.scp173HealthOnKillSet;
-                }
-                else if (ev.Killer.Role == RoleType.Scp0492)
-                {
-                    health = HealthOnKill.instance.Config.isHealthRegenRandom ? 
-                        (int)ev.Killer.Health + Random.Range(HealthOnKill.instance.Config.scp0492HealthOnKillRandomLowerBounds, HealthOnKill.instance.Config.scp0492HealthOnKillRandomUpperBounds) :
-                        (int)ev.Killer.Health + HealthOnKill.instance.Config.scp0492HealthOnKillSet;
-                }
+				if (ev.Killer.Role == RoleType.Scp93989 || ev.Killer.Role == RoleType.Scp93953)
+				{
+					health = HealthOnKill.instance.Config.isHealthRegenRandom ?
+						(int)ev.Killer.Health + Random.Range(HealthOnKill.instance.Config.scp939HealthOnKillRandomLowerBounds, HealthOnKill.instance.Config.scp939HealthOnKillRandomUpperBounds) :
+						(int)ev.Killer.Health + HealthOnKill.instance.Config.scp939HealthOnKillSet;
+				}
+				else if (ev.Killer.Role == RoleType.Scp173)
+				{
+					health = HealthOnKill.instance.Config.isHealthRegenRandom ?
+						(int)ev.Killer.Health + Random.Range(HealthOnKill.instance.Config.scp173HealthOnKillRandomLowerBounds, HealthOnKill.instance.Config.scp173HealthOnKillRandomUpperBounds) :
+						(int)ev.Killer.Health + HealthOnKill.instance.Config.scp173HealthOnKillSet;
+				}
+				else if (ev.Killer.Role == RoleType.Scp0492)
+				{
+					health = HealthOnKill.instance.Config.isHealthRegenRandom ?
+						(int)ev.Killer.Health + Random.Range(HealthOnKill.instance.Config.scp0492HealthOnKillRandomLowerBounds, HealthOnKill.instance.Config.scp0492HealthOnKillRandomUpperBounds) :
+						(int)ev.Killer.Health + HealthOnKill.instance.Config.scp0492HealthOnKillSet;
+				}
+				else if (ev.Killer.Role == RoleType.Scp106 && Warhead.IsDetonated)
+				{
+					health = HealthOnKill.instance.Config.isHealthRegenRandom ?
+						(int)ev.Killer.Health + Random.Range(5, 15) :
+						(int)ev.Killer.Health + HealthOnKill.instance.Config.scp106HealthOnKillSet;
+				}
+				else if (ev.Killer.Role == RoleType.Scp049 || ev.Killer.Role == RoleType.Scp096 || ev.Killer.Role == RoleType.Scp079)
+					return;
                 ev.Killer.Health = Mathf.Clamp(health, 0f, ev.Killer.MaxHealth);
             }
         }
